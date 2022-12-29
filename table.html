@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+  <script src="angularRoute.js"></script>
+  <script src="angular_js.js"></script>
+  <script src="angularjs.js"></script>
+
+  <script src="../srcipts/angular.js"></script>
+  <script src="table.css"></script>
+  <style>
+    table thead tr{
+      cursor:pointer;
+    }
+    .arrow-up {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid black;
+      display: inline-block;
+    }
+    .arrow-down {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid black;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body ng-app="app">
+  <div ng-controller="filterOrderByCtrl">
+    <table class="table">
+      <thead>
+        <tr>
+          <td ng-click="sortData('name')">Tên sản phẩm <div ng-class="getSortClass('name')"></div></td>
+          <td ng-click="sortData('birthDate')">Ngày sản xuất <div ng-class="getSortClass('birthDate')"></div></td>
+          <td ng-click="sortData('salary')">Giá sản phẩm <div ng-class="getSortClass('salary')"></div></td>
+          <td ng-click="sortData('birthDate')">Hạn sử dụng <div ng-class="getSortClass('birthDate')"></div></td>
+       
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in employees | orderBy:sortColumn:reverse">
+          <td>{{employee.name | uppercase}}</td>
+          <td>{{employee.birthDate | date:"dd/MM/yyyy"}}</td>
+          <td>{{employee.salary | currency:""}}</td>    
+          <td>{{employee.birthDate | date:"dd/MM/yyyy"}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
